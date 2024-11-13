@@ -1,0 +1,24 @@
+# Ignore Visual Studio files
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore build results
+bin/
+obj/
+
+# Ignore temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore macOS Finder files
+.DS_Store
+
+# Ignore Windows thumbnails
+Thumbs.db
+ 
