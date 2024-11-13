@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen();
 builder.WebHost.ConfigureKestrel(options =>
 {
     // Listen on localhost and the specified IP for consistency on port 7137
-    options.Listen(IPAddress.Parse("192.168.148.82"), 7137, listenOptions => listenOptions.UseHttps()); // This is HTTPS for your IP
+    options.Listen(IPAddress.Parse("192.168.**.**"), 7137, listenOptions => listenOptions.UseHttps()); // This is HTTPS for your IP
     options.Listen(IPAddress.Loopback, 7137, listenOptions => listenOptions.UseHttps()); // This is HTTPS for localhost
 });
 
