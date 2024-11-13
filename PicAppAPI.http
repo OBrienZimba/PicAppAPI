@@ -1,0 +1,6 @@
+@PicAppAPI_HostAddress = http://localhost:5003
+
+GET {{PicAppAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
