@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PicAppAPI.Data;
+
 using PicAppAPI.Models;
 
 namespace PicAppAPI.Controllers
@@ -21,17 +23,6 @@ namespace PicAppAPI.Controllers
             _context = context;
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<ImageData>>> GetImageData()
-        //{
-        //    var imageDataList = await _context.ImageData.ToListAsync();
-        //    foreach (var imageData in imageDataList)
-        //    {
-
-        //        imageData.FilePath = $"{Request.Scheme}://{Request.Host}{imageData.FilePath}";
-        //    }
-        //    return Ok(imageDataList);
-        //}
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ImageData>>> GetImageData()
@@ -40,12 +31,14 @@ namespace PicAppAPI.Controllers
 
             foreach (var imageData in imageDataList)
             {
-                // Return the full URL to the image
-                imageData.FilePath = $"{Request.Scheme}://{Request.Host}/images/{Path.GetFileName(imageData.FilePath)}";
+                // Build the full URL for the image file path
+                var fileName = Path.GetFileName(imageData.FilePath);
+                imageData.FilePath = $"{Request.Scheme}://{Request.Host}/images/{fileName}";
             }
 
             return Ok(imageDataList);
         }
+
 
 
 
